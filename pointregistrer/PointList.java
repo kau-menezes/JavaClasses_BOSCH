@@ -7,6 +7,7 @@ public class PointList {
 
     PointList() {}
 
-    public void addNodePoint (NodePoint nodepoint) {}
+    public void addNodePoint (Point value) {}
+        NodePoint newnodepoint = NodePoint(Point value)
 
 }
