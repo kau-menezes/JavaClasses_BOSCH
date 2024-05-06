@@ -26,6 +26,7 @@ public class Main {
         {
             
             
+            
             if (cpfLogin == null || passwordLogin == null) {
                     System.out.println("\n========= BEM-VINDO AO SISTEMA DE PONTO =========");
 
@@ -37,12 +38,12 @@ public class Main {
                     passwordLogin = scanf.nextLine();
                     
                 }
-
                 // percorre a lista atrás do dito cujo do usuário pra conferir as credenciais
                 userAccess = list.verifyAccess(cpfLogin, passwordLogin);
                 
                 // lida com os erros
                 errorHandling(userAccess);
+
 
                 if (userAccess == 0) {
                     System.err.print("\nVocê deseja:\n[1] Bater ponto\n[2] Fazer Logout");
