@@ -24,26 +24,27 @@ public class Main {
         
         while (true)
         {
-            
-            
-            
-            if (cpfLogin == null || passwordLogin == null) {
-                    System.out.println("\n========= BEM-VINDO AO SISTEMA DE PONTO =========");
+            // login 
+            System.out.println("\n========= BEM-VINDO AO SISTEMA DE PONTO =========");
 
-                    // printa o Menu de Login:
-                    System.out.println("\nDigite seu CPF:");
-                    cpfLogin = scanf.nextLine();
-        
-                    System.out.println("\nDigite sua Senha:");
-                    passwordLogin = scanf.nextLine();
-                    
-                }
-                // percorre a lista atrás do dito cujo do usuário pra conferir as credenciais
-                userAccess = list.verifyAccess(cpfLogin, passwordLogin);
+            // printa o Menu de Login:
+            System.out.println("\nDigite seu CPF:");
+            cpfLogin = scanf.nextLine();
+
+            System.out.println("\nDigite sua Senha:");
+            passwordLogin = scanf.nextLine();
                 
-                // lida com os erros
-                errorHandling(userAccess);
+            // percorre a lista atrás do dito cujo do usuário pra conferir as credenciais
+            userAccess = list.verifyAccess(cpfLogin, passwordLogin);
+            
+            // lida com os erros
+            errorHandling(userAccess);
 
+            while (true) {
+
+                if (cpfLogin == null || passwordLogin == null) {
+                    break;
+                }
 
                 if (userAccess == 0) {
                     System.err.print("\nVocê deseja:\n[1] Bater ponto\n[2] Fazer Logout");
@@ -92,6 +93,7 @@ public class Main {
                             break;
                         
                         case 2:
+                        System.out.println("\n=== LISTA DE FUNCIONÁRIOS ===\n");
                             list.printEmployees();
                             break;
                         
@@ -109,7 +111,8 @@ public class Main {
                             break;
                     }
                 }
-            
+            }
+
             }
 
             // previne memory leak
