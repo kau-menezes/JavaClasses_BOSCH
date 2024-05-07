@@ -9,26 +9,27 @@ public class Queue<T> {
     public void enqueue(NodeQueue node) {
         size ++;
         
+
         // adiciona o primeiro item da fila
         if (head == null) {
             head = node;
+            tail = head;
             return;
         }
-        
-        //declara um aux para percorrer a fila
-        NodeQueue current = head;
-        
-        //percorre a fila até achar o último item - "início" da fila
-        while (current.getNext() != null) {
-            current = current.getNext();
-        }
-        
-        current.setNext(node);
+
+        node.setPrevious(tail);
+        tail.setNext(node);
+        tail = node;
         
     }
     
     public T dequeue() {
         size--;
+
+        if (size == 0) {
+            head = null;
+        }
+
         head = head.getNext();
         return head.getValue();
     }
@@ -37,7 +38,21 @@ public class Queue<T> {
 
         NodeQueue current = head;
         for (int i = 0; i < size; i++) {
-            System.out.println(current.getValue());
+
+
+            System.out.println("\nValor "+ i + ": " + current.getValue());
+        
+        // debugging
+        //    if (current.getNext() != null) {
+
+        //        System.err.print("next: " + current.getNext().getValue() + " - ");
+        //    }
+
+        //    if (current.getPrevious() != null) {
+
+        //        System.err.print("previous: " + current.getPrevious().getValue());
+        //    }
+
             current = current.getNext();
 
         }
