@@ -8,7 +8,6 @@ public class Queue<T> {
     
     public void enqueue(NodeQueue node) {
         size ++;
-        
 
         // adiciona o primeiro item da fila
         if (head == null) {
@@ -40,7 +39,7 @@ public class Queue<T> {
         for (int i = 0; i < size; i++) {
 
 
-            System.out.println("\nValor "+ i + ": " + current.getValue());
+            System.out.println(current.getValue());
         
         // debugging
         //    if (current.getNext() != null) {
