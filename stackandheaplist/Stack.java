@@ -7,7 +7,7 @@ public class Stack<T>{
     // construtor
     Stack(int listOriginalSize) {
         this.originalSize = listOriginalSize;
-        list = (T[])(new Object[10]);
+        list = (T[])(new Object[listOriginalSize]);
         
     }
     
@@ -24,7 +24,7 @@ public class Stack<T>{
             list = copy;
         }
         
-        list[size] = value;
+        list[size - 1] = value;
         
     }
 
@@ -48,9 +48,9 @@ public class Stack<T>{
     }
     
     public T pop() {
-        size--;
         T returnValue = list[size - 1];
         list[size - 1] = null;
+        size--;
         
         return returnValue;
         

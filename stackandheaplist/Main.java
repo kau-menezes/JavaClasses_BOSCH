@@ -21,9 +21,9 @@ public class Main {
 
         System.out.println("\n=== VALORES ATUALIZADOS DA FILA: ===");
         queue.printQueue();
-        
+
         // adiciona valores na lista
-        for (int i = 1; i < 10; i += 2) {
+        for (int i = 0; i < 8; i += 2) {
             stack.push(i);
         }
 
@@ -43,14 +43,14 @@ public class Main {
         stack.printStack();
 
         // adiciona novos valores na lista
-        for (int i = stack.findLast(); i < 10; i += 2) {
+        for (int i = 0; i < 10; i += 2) {
             stack.push(i);
         }
         
         // printa os valores da lista
         System.out.println("=== VALORES ATUALIZADOS DA LISTA: ===");
         System.out.println("\nTAMANHO: " + stack.getSize());
-        System.out.println("\nCAPACIDADE TOTAL: " + stack.getList().length);
+        System.out.println("\nCAPACIDADE TOTAL: " + stack.findLenght());
         stack.printStack();
 
     }
