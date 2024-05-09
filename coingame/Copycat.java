@@ -2,11 +2,10 @@ package coingame;
 
 public class Copycat extends Individual{
     
-    public boolean tricked = false;
+    public boolean lastPlay = true;
 
     @Override
-    int play() {
-        int returnValue = (tricked == false ?  1 :  0); 
-        return returnValue;
+    boolean play() {
+        return this.lastPlay; 
     }
 }

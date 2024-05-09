@@ -3,7 +3,7 @@ package coingame;
 public class Cheater extends Individual {
     
     @Override
-    int play() {
-        return 0;
+    boolean play() {
+        return false;
     }
 }
