@@ -6,11 +6,18 @@ public class Cooperator extends Individual {
     boolean play() {
 
         this.coins--;
-        
+
         return true;
     }
 
     @Override
     void calc(boolean oponentPlay) {}
+
+    @Override
+    Individual copy() {
+
+        Cooperator clone = new Cooperator();
+        return clone;
+    }
     
 }

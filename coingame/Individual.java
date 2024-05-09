@@ -6,7 +6,7 @@ abstract public class Individual {
 
     abstract boolean play();
 
-    // abstract Individual copy();
+    abstract Individual copy();
 
     abstract void calc(boolean oponentPlay);
 

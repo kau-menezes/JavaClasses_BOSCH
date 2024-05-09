@@ -9,7 +9,7 @@ public class Tolerant extends Individual {
     boolean play() {
 
         this.coins--;
-        
+
         if (this.timesTricked == 3 && this.timesItTricked < 3) {
             this.timesItTricked++;
             return false;
@@ -26,5 +26,12 @@ public class Tolerant extends Individual {
         if (oponentPlay == false) {
             this.timesTricked ++;
         }
+    }
+
+    @Override
+    Individual copy() {
+
+        Tolerant clone = new Tolerant();
+        return clone;
     }
 }

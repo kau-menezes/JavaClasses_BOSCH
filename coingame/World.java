@@ -104,10 +104,12 @@ public class World {
         
         if (value == -1) {
             player.alive = false;
+            currentSize--;
 
         } else if (value == 1) {
-            // multiplica Senhor
-
+            Individual clone = player.copy();
+            push(clone);
+            currentSize++;
         } 
     }
 
@@ -153,6 +155,14 @@ public class World {
         // impacto na personalidade dos jogadores
         playerOne.calc(playTwo);
         playerTwo.calc(playOne);
+
+        // verifica as moedas e staus do jogador
+        int return1 = verifyCoins(playerOne);
+        int return2 = verifyCoins(playerTwo);
+
+        playerStaus(playerOne, return1);
+        playerStaus(playerTwo, return2);
+
 
     }
 }

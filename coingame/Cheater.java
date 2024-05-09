@@ -12,4 +12,11 @@ public class Cheater extends Individual {
 
     @Override
     void calc(boolean oponentPlay) {}
+
+    @Override
+    Individual copy() {
+
+        Cheater clone = new Cheater();
+        return clone;
+    }
 }

@@ -8,7 +8,7 @@ public class Grumpy extends Individual{
     boolean play() {
 
         this.coins--;
-        
+
         return (tricked == false ?  true :  false); 
     }
 
@@ -17,5 +17,12 @@ public class Grumpy extends Individual{
         if (oponentPlay == false) {
             this.tricked = true;
         }
+    }
+
+    @Override
+    Individual copy() {
+
+        Grumpy clone = new Grumpy();
+        return clone;
     }
 }
