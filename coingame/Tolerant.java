@@ -34,4 +34,9 @@ public class Tolerant extends Individual {
         Tolerant clone = new Tolerant();
         return clone;
     }
+
+    @Override
+    void print() {
+        System.out.println("Tolerant");
+    }
 }

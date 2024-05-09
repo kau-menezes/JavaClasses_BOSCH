@@ -19,4 +19,9 @@ public class Cheater extends Individual {
         Cheater clone = new Cheater();
         return clone;
     }
+
+    @Override
+    void print() {
+        System.out.println("Cheater");
+    }
 }

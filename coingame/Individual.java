@@ -10,4 +10,6 @@ abstract public class Individual {
 
     abstract void calc(boolean oponentPlay);
 
+    abstract void print();
+
 }

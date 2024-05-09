@@ -19,5 +19,10 @@ public class Cooperator extends Individual {
         Cooperator clone = new Cooperator();
         return clone;
     }
+
+    @Override
+    void print() {
+        System.out.println("Cooperator");
+    }
     
 }

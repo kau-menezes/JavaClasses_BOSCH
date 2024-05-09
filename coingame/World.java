@@ -90,7 +90,8 @@ public class World {
        }
         
     }
-
+    
+    // retorna um valor dependente da quantidade de moedas
     public int verifyCoins(Individual player) {
         if (player.coins == 0) {
             return -1;
@@ -104,6 +105,7 @@ public class World {
 
     }
 
+    // baseado no número de moedas, realiza uma determinada ação
     public void playerStaus(Individual player, int value) {
         
         if (value == -1) {
@@ -117,11 +119,14 @@ public class World {
         } 
     }
 
+    // o jogo em si
     public void round(Individual[] array) {
 
+        // realiza 250 interações 
         for (int i = 0; i < 250; i++) {
 
             System.out.println("\n=== RODADA: " + i);
+
             //instancia um objeto da classe Random
             Random random = new Random();
     
@@ -129,7 +134,6 @@ public class World {
             int rnd1,rnd2;
             
             // impede a geração de dois números iguais
-            
                 do
                 {
                     rnd1 = random.nextInt(currentSize);

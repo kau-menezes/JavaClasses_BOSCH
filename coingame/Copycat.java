@@ -23,4 +23,9 @@ public class Copycat extends Individual{
         Copycat clone = new Copycat();
         return clone;
     }
+
+    @Override
+    void print() {
+        System.out.println("Copycat");
+    }
 }

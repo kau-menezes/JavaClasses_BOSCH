@@ -25,4 +25,9 @@ public class Grumpy extends Individual{
         Grumpy clone = new Grumpy();
         return clone;
     }
+
+    @Override
+    void print() {
+        System.out.println("Grumpy");
+    }
 }
