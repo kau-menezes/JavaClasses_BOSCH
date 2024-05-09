@@ -142,19 +142,19 @@ public class World {
 
     
             // os dois cooperam
-            if (playOne == true && playOne == playTwo) {
+            if (playOne && playTwo) {
                 playerOne.coins++;
                 playerTwo.coins++;
                 System.out.println("\nOs dois coperaram!");
 
     
             // playerOne coopera e playerTwo trapaceia
-            } else if (playOne == true && playOne != playTwo) {
+            } else if (playOne && !playTwo) {
                 playerTwo.coins += 4;
                 System.out.println("\nP2 trapaceou!");
     
             // playerOne traapceia e playerTwo coopera
-            } else if (playOne == false && playOne != playTwo) {
+            } else if (!playOne && playTwo) {
                 playerOne.coins += 4;
                 System.out.println("\nP1 trapaceou!");
     
