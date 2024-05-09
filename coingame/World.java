@@ -87,6 +87,30 @@ public class World {
         
     }
 
+    public int verifyCoins(Individual player) {
+        if (player.coins == 0) {
+            return -1;
+
+        } else if (player.coins >= 20) {
+            return 1;
+
+        } else {
+            return 0;
+        }
+
+    }
+
+    public void playerStaus(Individual player, int value) {
+        
+        if (value == -1) {
+            player.alive = false;
+
+        } else if (value == 1) {
+            // multiplica Senhor
+
+        } 
+    }
+
     public void round(Individual[] array, Individual first, Individual second) {
 
         //instancia um objeto da classe Random
