@@ -57,7 +57,7 @@ public class World {
 
             Grumpy grumpy = new Grumpy();
 
-            for (int i = 0; i < this.totalCooperators; i++) {
+            for (int i = 0; i < this.totalGrumpys; i++) {
                 push(grumpy);
             }
 
@@ -67,11 +67,21 @@ public class World {
 
              Copycat copycat = new Copycat();
 
-            for (int i = 0; i < this.totalCooperators; i++) {
+            for (int i = 0; i < this.totalCopycats; i++) {
                 push(copycat);
             }
 
         }
+
+        if (this.totalTolerants != 0) {
+
+            Tolerant tolerant = new Tolerant();
+
+           for (int i = 0; i < this.totalTolerants; i++) {
+               push(tolerant);
+           }
+
+       }
 
         
     }
