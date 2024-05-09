@@ -4,6 +4,9 @@ public class Cooperator extends Individual {
 
     @Override
     boolean play() {
+
+        this.coins--;
+        
         return true;
     }
 

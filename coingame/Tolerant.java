@@ -7,6 +7,9 @@ public class Tolerant extends Individual {
 
     @Override
     boolean play() {
+
+        this.coins--;
+        
         if (this.timesTricked == 3 && this.timesItTricked < 3) {
             this.timesItTricked++;
             return false;

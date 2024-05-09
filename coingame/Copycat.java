@@ -6,6 +6,9 @@ public class Copycat extends Individual{
 
     @Override
     boolean play() {
+
+        this.coins--;
+        
         return this.lastPlay; 
     }
 

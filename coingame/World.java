@@ -107,6 +107,28 @@ public class World {
         Individual playerOne = array[rnd1];
         Individual playerTwo = array[rnd2];
 
+        // play!
+        boolean playOne = playerOne.play();
+        boolean playTwo = playerTwo.play();
+
+        // os dois cooperam
+        if (playOne == true && playOne == playTwo) {
+            playerOne.coins++;
+            playerTwo.coins++;
+
+        // playerOne coopera e playerTwo trapaceia
+        } else if (playOne == true && playOne != playTwo) {
+            playerTwo.coins += 4;
+
+        // playerOne traapceia e playerTwo coopera
+        } else if (playOne == false && playOne != playTwo) {
+            playerOne.coins += 4;
+
+        }
+
+        // impacto na personalidade dos jogadores
+        playerOne.calc(playTwo);
+        playerTwo.calc(playOne);
 
     }
 }

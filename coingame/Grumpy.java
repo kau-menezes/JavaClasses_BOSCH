@@ -6,6 +6,9 @@ public class Grumpy extends Individual{
 
     @Override
     boolean play() {
+
+        this.coins--;
+        
         return (tricked == false ?  true :  false); 
     }
 
