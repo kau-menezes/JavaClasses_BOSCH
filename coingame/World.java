@@ -121,7 +121,7 @@ public class World {
 
         for (int i = 0; i < 250; i++) {
 
-            System.out.println("\n" + i);
+            System.out.println("\n=== RODADA: " + i);
             //instancia um objeto da classe Random
             Random random = new Random();
     
@@ -144,11 +144,18 @@ public class World {
             // play!
             boolean playOne = playerOne.play();
             boolean playTwo = playerTwo.play();
+
+            // voltar com o método abtrato de print();
+            // System.err.println("\nPlayer One: " + );
+            // System.err.println("\nPlayer Two: " + );
+
     
             // os dois cooperam
             if (playOne == true && playOne == playTwo) {
                 playerOne.coins++;
                 playerTwo.coins++;
+            // System.err.println("\nOs dois coperaram!");
+
     
             // playerOne coopera e playerTwo trapaceia
             } else if (playOne == true && playOne != playTwo) {
@@ -169,6 +176,7 @@ public class World {
             int return2 = verifyCoins(playerTwo);
     
             playerStaus(playerOne, return1);
+            // System.err.println("\nMorreu ou clonou!");
             playerStaus(playerTwo, return2);
         }
 

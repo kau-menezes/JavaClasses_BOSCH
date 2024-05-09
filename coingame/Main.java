@@ -10,5 +10,9 @@ public class Main {
         // play!!
         world.round(world.population);
 
+        //statistics:
+        // 1) pop. atual - 2)quantos se clonaram - 3) quantos morreram - 
+        System.err.println();
+
     }
 }
