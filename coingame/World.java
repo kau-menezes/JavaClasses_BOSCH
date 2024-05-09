@@ -1,5 +1,7 @@
 package coingame;
 
+import java.util.Random;
+
 public class World {
     public int totalCheaters;
     public int totalCooperators;
@@ -82,8 +84,24 @@ public class World {
            }
 
        }
-
         
     }
 
+    public void round(Individual[] array, Individual first, Individual second) {
+
+        //instancia um objeto da classe Random
+        Random random = new Random();
+
+        // guarda números aleatórios em duas variáveis diferentes
+        int rnd1 = random.nextInt(currentSize + 1);
+        int rnd2 = random.nextInt(currentSize + 1);
+
+        // impede a geração de dois números iguais
+        if (rnd1 == rnd2) {
+            while (rnd1 == rnd2) {
+                rnd2 = random.nextInt(currentSize + 1);
+            }
+        }
+
+    }
 }
