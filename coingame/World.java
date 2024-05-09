@@ -11,7 +11,7 @@ public class World {
 
     private int currentSize = 0;
 
-    public Individual[] population = new Individual[500];
+    public Individual[] population = new Individual[700];
 
     World(int totalCheaters, int totalCooperators, int totalGrumpys, int totalCopycats, int totalTolerants) {
         this.totalCheaters = totalCheaters;
@@ -19,14 +19,15 @@ public class World {
         this.totalGrumpys = totalGrumpys;
         this.totalCopycats = totalCopycats;
         this.totalTolerants = totalTolerants;
+        addIndividuals();
 
     }
 
     public void push(Individual value) {
         
-        //provavelmente se eu alterar a ordem das duas linhas e retirae o -1 daria certo mas eu não sou LOUCA de tentar
+        //provavelmente se eu alterar a ordem das duas linhas e retirae o -1 daria certo mas eu não sou LOUCA de tentar -- eu tava certa obg cristian
+        population[currentSize] = value;
         currentSize++;
-        population[currentSize - 1] = value;
         
     }
 
@@ -61,6 +62,7 @@ public class World {
 
             for (int i = 0; i < this.totalGrumpys; i++) {
                 push(grumpy);
+
             }
 
         }
@@ -71,6 +73,7 @@ public class World {
 
             for (int i = 0; i < this.totalCopycats; i++) {
                 push(copycat);
+
             }
 
         }
@@ -81,6 +84,7 @@ public class World {
 
            for (int i = 0; i < this.totalTolerants; i++) {
                push(tolerant);
+
            }
 
        }
@@ -104,65 +108,69 @@ public class World {
         
         if (value == -1) {
             player.alive = false;
-            currentSize--;
 
         } else if (value == 1) {
             Individual clone = player.copy();
             push(clone);
-            currentSize++;
+            // currentSize++;
+            System.out.println("\nclonei kkkk\n");
         } 
     }
 
-    public void round(Individual[] array, Individual first, Individual second) {
+    public void round(Individual[] array) {
 
-        //instancia um objeto da classe Random
-        Random random = new Random();
+        for (int i = 0; i < 250; i++) {
 
-        // guarda números aleatórios em duas variáveis diferentes
-        int rnd1 = random.nextInt(currentSize + 1);
-        int rnd2 = random.nextInt(currentSize + 1);
+            System.out.println("\n" + i);
+            //instancia um objeto da classe Random
+            Random random = new Random();
+    
+            // guarda números aleatórios em duas variáveis diferentes
+            int rnd1,rnd2;
+            
+            // impede a geração de dois números iguais
+            
+                do
+                {
+                    rnd1 = random.nextInt(currentSize);
+                    rnd2 = random.nextInt(currentSize);
 
-        // impede a geração de dois números iguais
-        if (rnd1 == rnd2) {
-            while (rnd1 == rnd2) {
-                rnd2 = random.nextInt(currentSize + 1);
-            }
+                } while (rnd1 == rnd2);
+    
+            // define duas variáveis que guardarão os jogadores
+            Individual playerOne = array[rnd1];
+            Individual playerTwo = array[rnd2];
+    
+            // play!
+            boolean playOne = playerOne.play();
+            boolean playTwo = playerTwo.play();
+    
+            // os dois cooperam
+            if (playOne == true && playOne == playTwo) {
+                playerOne.coins++;
+                playerTwo.coins++;
+    
+            // playerOne coopera e playerTwo trapaceia
+            } else if (playOne == true && playOne != playTwo) {
+                playerTwo.coins += 4;
+    
+            // playerOne traapceia e playerTwo coopera
+            } else if (playOne == false && playOne != playTwo) {
+                playerOne.coins += 4;
+    
+            } else {}
+    
+            // impacto na personalidade dos jogadores
+            playerOne.calc(playTwo);
+            playerTwo.calc(playOne);
+    
+            // verifica as moedas e staus do jogador
+            int return1 = verifyCoins(playerOne);
+            int return2 = verifyCoins(playerTwo);
+    
+            playerStaus(playerOne, return1);
+            playerStaus(playerTwo, return2);
         }
-
-        // define duas variáveis que guardarão os jogadores
-        Individual playerOne = array[rnd1];
-        Individual playerTwo = array[rnd2];
-
-        // play!
-        boolean playOne = playerOne.play();
-        boolean playTwo = playerTwo.play();
-
-        // os dois cooperam
-        if (playOne == true && playOne == playTwo) {
-            playerOne.coins++;
-            playerTwo.coins++;
-
-        // playerOne coopera e playerTwo trapaceia
-        } else if (playOne == true && playOne != playTwo) {
-            playerTwo.coins += 4;
-
-        // playerOne traapceia e playerTwo coopera
-        } else if (playOne == false && playOne != playTwo) {
-            playerOne.coins += 4;
-
-        }
-
-        // impacto na personalidade dos jogadores
-        playerOne.calc(playTwo);
-        playerTwo.calc(playOne);
-
-        // verifica as moedas e staus do jogador
-        int return1 = verifyCoins(playerOne);
-        int return2 = verifyCoins(playerTwo);
-
-        playerStaus(playerOne, return1);
-        playerStaus(playerTwo, return2);
-
 
     }
 }
