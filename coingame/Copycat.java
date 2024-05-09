@@ -8,4 +8,9 @@ public class Copycat extends Individual{
     boolean play() {
         return this.lastPlay; 
     }
+
+    @Override
+    void calc(boolean oponentPlay) {
+        this.lastPlay = oponentPlay;
+    }
 }

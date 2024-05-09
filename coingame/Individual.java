@@ -5,6 +5,9 @@ abstract public class Individual {
     public boolean alive = true;
 
     abstract boolean play();
+
     // abstract Individual copy();
+
+    abstract void calc(boolean oponentPlay);
 
 }

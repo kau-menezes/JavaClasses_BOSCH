@@ -103,5 +103,10 @@ public class World {
             }
         }
 
+        // define duas variáveis que guardarão os jogadores
+        Individual playerOne = array[rnd1];
+        Individual playerTwo = array[rnd2];
+
+
     }
 }

@@ -17,4 +17,11 @@ public class Tolerant extends Individual {
             return true;
         } 
     }
+
+    @Override
+    void calc(boolean oponentPlay) {
+        if (oponentPlay == false) {
+            this.timesTricked ++;
+        }
+    }
 }
