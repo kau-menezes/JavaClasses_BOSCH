@@ -7,7 +7,8 @@ public class Grumpy extends Individual{
     @Override
     boolean play() {
 
-        this.coins--;
+        // custo da máquina + custo de sobrevivência
+        this.coins-= 2;
 
         return (tricked == false ?  true :  false); 
     }
@@ -27,7 +28,7 @@ public class Grumpy extends Individual{
     }
 
     @Override
-    void print() {
-        System.out.println("Grumpy");
+    String print() {
+        return "Grumpy";
     }
 }

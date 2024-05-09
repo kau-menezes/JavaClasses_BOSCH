@@ -5,7 +5,8 @@ public class Cheater extends Individual {
     @Override
     boolean play() {
 
-        this.coins--;
+        // custo da máquina + custo de sobrevivência
+        this.coins-= 2;
         
         return false;
     }
@@ -21,7 +22,7 @@ public class Cheater extends Individual {
     }
 
     @Override
-    void print() {
-        System.out.println("Cheater");
+    String print() {
+        return "Cheater";
     }
 }

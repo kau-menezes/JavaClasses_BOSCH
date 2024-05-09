@@ -8,7 +8,8 @@ public class Tolerant extends Individual {
     @Override
     boolean play() {
 
-        this.coins--;
+        // custo da máquina + custo de sobrevivência
+        this.coins-= 2;
 
         if (this.timesTricked == 3 && this.timesItTricked < 3) {
             this.timesItTricked++;
@@ -36,7 +37,7 @@ public class Tolerant extends Individual {
     }
 
     @Override
-    void print() {
-        System.out.println("Tolerant");
+    String print() {
+        return "Tolerant";
     }
 }

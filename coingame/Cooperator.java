@@ -5,7 +5,8 @@ public class Cooperator extends Individual {
     @Override
     boolean play() {
 
-        this.coins--;
+        // custo da máquina + custo de sobrevivência
+        this.coins-= 2;
 
         return true;
     }
@@ -21,8 +22,8 @@ public class Cooperator extends Individual {
     }
 
     @Override
-    void print() {
-        System.out.println("Cooperator");
+    String print() {
+        return "Cooperator";
     }
     
 }

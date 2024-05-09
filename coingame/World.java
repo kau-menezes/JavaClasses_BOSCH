@@ -92,31 +92,18 @@ public class World {
     }
     
     // retorna um valor dependente da quantidade de moedas
-    public int verifyCoins(Individual player) {
-        if (player.coins == 0) {
-            return -1;
+    public void playerStatus(Individual player) {
+        if (player.coins <= 0) {
+            player.alive = false;
+            System.out.println("\nUm Player morreu :(");
 
         } else if (player.coins >= 20) {
-            return 1;
-
-        } else {
-            return 0;
-        }
-
-    }
-
-    // baseado no número de moedas, realiza uma determinada ação
-    public void playerStaus(Individual player, int value) {
-        
-        if (value == -1) {
-            player.alive = false;
-
-        } else if (value == 1) {
             Individual clone = player.copy();
             push(clone);
-            // currentSize++;
-            System.out.println("\nclonei kkkk\n");
+            System.out.println("\nUm Player foi clonado :)");
+
         } 
+
     }
 
     // o jogo em si
@@ -150,38 +137,40 @@ public class World {
             boolean playTwo = playerTwo.play();
 
             // voltar com o método abtrato de print();
-            // System.err.println("\nPlayer One: " + );
-            // System.err.println("\nPlayer Two: " + );
+            System.out.printf("\nPlayer One: %s", playerOne.print());
+            System.out.printf("\nPlayer Two: %s\n", playerTwo.print());
 
     
             // os dois cooperam
             if (playOne == true && playOne == playTwo) {
                 playerOne.coins++;
                 playerTwo.coins++;
-            // System.err.println("\nOs dois coperaram!");
+                System.out.println("\nOs dois coperaram!");
 
     
             // playerOne coopera e playerTwo trapaceia
             } else if (playOne == true && playOne != playTwo) {
                 playerTwo.coins += 4;
+                System.out.println("\nP2 trapaceou!");
     
             // playerOne traapceia e playerTwo coopera
             } else if (playOne == false && playOne != playTwo) {
                 playerOne.coins += 4;
+                System.out.println("\nP1 trapaceou!");
     
-            } else {}
+            } else {
+                System.out.println("\nOs dois trapacearam!");
+            }
     
             // impacto na personalidade dos jogadores
             playerOne.calc(playTwo);
             playerTwo.calc(playOne);
     
-            // verifica as moedas e staus do jogador
-            int return1 = verifyCoins(playerOne);
-            int return2 = verifyCoins(playerTwo);
-    
-            playerStaus(playerOne, return1);
-            // System.err.println("\nMorreu ou clonou!");
-            playerStaus(playerTwo, return2);
+            playerStatus(playerOne);
+            playerStatus(playerTwo);
+
+            System.out.println("\n===");
+
         }
 
     }

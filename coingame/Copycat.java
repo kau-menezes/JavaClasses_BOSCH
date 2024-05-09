@@ -7,7 +7,8 @@ public class Copycat extends Individual{
     @Override
     boolean play() {
 
-        this.coins--;
+        // custo da máquina + custo de sobrevivência
+        this.coins-= 2;
 
         return this.lastPlay; 
     }
@@ -25,7 +26,7 @@ public class Copycat extends Individual{
     }
 
     @Override
-    void print() {
-        System.out.println("Copycat");
+    String print() {
+        return "Copycat";
     }
 }
