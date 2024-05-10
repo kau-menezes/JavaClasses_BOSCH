@@ -9,7 +9,10 @@ public class World {
     public int totalCopycats;
     public int totalTolerants;
 
-    private int currentSize = 0;
+    int totalDeaths = 0;
+    int totalClones = 0;
+
+    public int currentSize = 0;
 
     public Individual[] population = new Individual[700];
 
@@ -91,16 +94,27 @@ public class World {
         
     }
     
+    public void pop(int rndIndex) {
+        for(int i = rndIndex; i < currentSize - 1; i++) {
+            population[i] = population[i + 1];
+        }
+        currentSize--;
+    }
+
+
     // retorna um valor dependente da quantidade de moedas
-    public void playerStatus(Individual player) {
+    public void playerStatus(Individual player, int rndIndex) {
         if (player.coins <= 0) {
             player.alive = false;
-            System.out.println("\nUm Player morreu :(");
+            pop(rndIndex);
+            totalDeaths++;
+            System.out.println("\nUm " + player.print() + " morreu :(");
 
         } else if (player.coins >= 20) {
             Individual clone = player.copy();
             push(clone);
-            System.out.println("\nUm Player foi clonado :)");
+            totalClones++;
+            System.out.println("\nUm " + player.print() + " foi clonado :)");
 
         } 
 
@@ -110,7 +124,7 @@ public class World {
     public void round(Individual[] array) {
 
         // realiza 250 interações 
-        for (int i = 0; i < 250; i++) {
+        for (int i = 0; i < 50; i++) {
 
             System.out.println("\n=== RODADA: " + i);
 
@@ -145,7 +159,7 @@ public class World {
             if (playOne && playTwo) {
                 playerOne.coins++;
                 playerTwo.coins++;
-                System.out.println("\nOs dois coperaram!");
+                System.out.println("\nOs dois cooperaram!");
 
     
             // playerOne coopera e playerTwo trapaceia
@@ -161,13 +175,15 @@ public class World {
             } else {
                 System.out.println("\nOs dois trapacearam!");
             }
-    
+            System.out.println("\nP1 Moedas: " + playerOne.coins);
+            System.out.println("\nP2 Moedas: " + playerTwo.coins);
+
             // impacto na personalidade dos jogadores
             playerOne.calc(playTwo);
             playerTwo.calc(playOne);
     
-            playerStatus(playerOne);
-            playerStatus(playerTwo);
+            playerStatus(playerOne, rnd1);
+            playerStatus(playerTwo, rnd2);
 
             System.out.println("\n===");
 

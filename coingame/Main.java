@@ -5,12 +5,18 @@ public class Main {
     public static void main (String []args) {
 
         // instancia a classe World
-        World world = new World(150, 200, 50, 50, 50);
+        World world = new World(0, 500, 0, 0, 0);
 
         // play!!
         world.round(world.population);
 
         //statistics:
+        System.out.println("\n=== ESTATÍSTICAS ===\n");
+        System.out.println("\n=== Total de vivos da população: " + world.currentSize);
+        System.out.println("\n=== Total de mortes: " + world.totalDeaths);
+        System.out.println("\n=== Total de clones: " + world.totalClones);
+
+
         // 1) pop. atual - 2)quantos se clonaram - 3) quantos morreram - 
         System.err.println();
 
