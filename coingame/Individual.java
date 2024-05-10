@@ -6,6 +6,7 @@ abstract public class Individual {
     
     public boolean alive = true;
     
+    
     abstract boolean play();
     
     abstract Individual copy();
@@ -17,8 +18,16 @@ abstract public class Individual {
     public int getCoins() {
         return coins;
     }
-
+    
     public void setCoins(int coins) {
         this.coins = coins;
+    }
+    
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
     }
 }

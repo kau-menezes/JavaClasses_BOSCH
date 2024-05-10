@@ -14,7 +14,7 @@ public class World {
 
     public int currentSize = 0;
 
-    public Individual[] population = new Individual[500];
+    public Individual[] population = new Individual[700];
 
     World(int totalCheaters, int totalCooperators, int totalGrumpys, int totalCopycats, int totalTolerants) {
         this.totalCheaters = totalCheaters;
@@ -100,6 +100,7 @@ public class World {
         //     population[i] = population[i + 1];
         // }
         population[rndIndex] = population[currentSize - 1];
+        population[currentSize - 1] = null;
 
         currentSize--;
     }
@@ -112,8 +113,8 @@ public class World {
 
     // retorna um valor dependente da quantidade de moedas
     public void playerStatus(Individual player, int rndIndex) {
-        if (player.getCoins() <= 0) {
-            player.alive = false;
+        if (player.getCoins() < 0) {
+            player.setAlive(false);
             pop(rndIndex);
             totalDeaths++;
             System.out.println("\nUm " + player.print() + " morreu :(");
@@ -132,13 +133,13 @@ public class World {
     // o jogo em si
     public void round(Individual[] array) {
 
+        //instancia um objeto da classe Random - seed
+        Random random = new Random(System.currentTimeMillis());
         // realiza 250 interações 
         for (int i = 0; i < 500 / 2; i++) {
 
             System.out.printf("\n===== RODADA: %d =====", i);
 
-            //instancia um objeto da classe Random - seed
-            Random random = new Random(System.currentTimeMillis());
     
             // guarda números aleatórios em duas variáveis diferentes
             int rnd1, rnd2;
@@ -146,12 +147,20 @@ public class World {
             Individual playerOne, playerTwo;
             
             // impede a geração de dois números iguais
-                do
-                {
-                    rnd1 = random.nextInt(currentSize);
-                    rnd2 = random.nextInt(currentSize);
 
-                } while (rnd1 == rnd2  || !array[rnd1].alive || !array[rnd2].alive);
+            rnd1 = random.nextInt(currentSize);
+            rnd2 = random.nextInt(currentSize);
+
+            do
+            {
+                rnd1 = random.nextInt(currentSize);
+                rnd2 = random.nextInt(currentSize);
+
+                if (rnd1 == rnd2) {
+                    rnd2 = rnd1 + 1;
+                }
+
+            } while (!array[rnd1].alive || !array[rnd2].alive);
     
             // define duas variáveis que guardarão os jogadores
             playerOne = array[rnd1];
@@ -165,6 +174,9 @@ public class World {
             // voltar com o método abtrato de print();
             System.out.printf("\nPlayer One: %s", playerOne.print());
             System.out.printf("\nPlayer Two: %s\n", playerTwo.print());
+
+            System.out.println("\nP1: " + playerOne.isAlive());
+            System.out.println("\nP2: " + playerTwo.isAlive());
 
             System.out.println("\nP1 Moedas ao início da rodada: " + playerOne.getCoins());
             System.out.println("P2 Moedas ao início da rodada: " + playerTwo.getCoins());
@@ -181,12 +193,14 @@ public class World {
             } else if (playOne && !playTwo) {
                 playerTwo.setCoins(playerTwo.getCoins() + 4);
                 playerOne.setCoins(playerOne.getCoins() - 1);
+
                 System.out.println("\nP2 trapaceou!\n");
     
             // playerOne traapceia e playerTwo coopera
             } else if (!playOne && playTwo) {
                 playerOne.setCoins(playerOne.getCoins() + 4);
                 playerTwo.setCoins(playerTwo.getCoins() - 1);
+
                 System.out.println("\nP1 trapaceou!\n");
     
             } else {
@@ -197,13 +211,17 @@ public class World {
             playerOne.calc(playTwo);
             playerTwo.calc(playOne);
             
+            taxes(playerOne, playerTwo);
+
             playerStatus(playerOne, rnd1);
             playerStatus(playerTwo, rnd2);
 
-            taxes(playerOne, playerTwo);
             
             System.out.println("\nP1 Moedas ao final da rodada: " + playerOne.getCoins());
             System.out.println("P2 Moedas ao final da rodada: " + playerTwo.getCoins());
+
+            System.out.println("\nP1: " + playerOne.isAlive());
+            System.out.println("\nP2: " + playerTwo.isAlive());
 
             System.out.println(currentSize);
 
