@@ -9,7 +9,7 @@ public class Tolerant extends Individual {
     boolean play() {
 
         // custo da máquina + custo de sobrevivência
-        this.coins-= 2;
+        // this.coins-= 2;
 
         if (this.timesTricked == 3 && this.timesItTricked < 3) {
             this.timesItTricked++;

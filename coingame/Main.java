@@ -5,7 +5,7 @@ public class Main {
     public static void main (String []args) {
 
         // instancia a classe World
-        World world = new World(0, 500, 0, 0, 0);
+        World world = new World(50, 150, 50, 50, 100);
 
         // play!!
         world.round(world.population);

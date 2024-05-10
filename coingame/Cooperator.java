@@ -6,7 +6,7 @@ public class Cooperator extends Individual {
     boolean play() {
 
         // custo da máquina + custo de sobrevivência
-        this.coins-= 2;
+        // this.coins-= 2;
 
         return true;
     }
