@@ -1,0 +1,13 @@
+grafo -> vetor de vetor
+
+cada pai vai ter um vetor que contém seus filhos
+
+cada nó contém: value e next
+
+na queue é adicionado o primeiro pai
+
+os filhos de cada pai são analisados e colocados na fila
+
+o pai é removido da fila e adicionado na hash
+
+quando um valor da queue e do hash forem iguais: break e corre pro abraço
