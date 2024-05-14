@@ -22,10 +22,11 @@ public class Queue {
         }
 
         current.setNext(newnode);
+        quantity++;
 
     }
 
-    public void popNode(int value) {
+    public void popNode() {
 
         quantity--;
 

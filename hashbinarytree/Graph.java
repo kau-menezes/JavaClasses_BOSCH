@@ -7,6 +7,8 @@ public class Graph {
 
     Graph() {}
 
-    
+    public int[] getHeritage(int value) {
+        return array[value];
+    }
 
 }
