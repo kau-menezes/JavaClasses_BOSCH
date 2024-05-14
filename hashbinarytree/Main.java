@@ -20,7 +20,7 @@ public class Main {
                     break;
                 
                 case 0:
-                    System.out.println("\nÉ! :)");
+                    System.out.println("\nÉ cíclico! :)");
                     break;
     
                 default:
