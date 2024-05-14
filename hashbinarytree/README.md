@@ -5,11 +5,11 @@ da sua posição. O nosso trabalho será usar uma busca, marcando os lugares que
 podemos sair de um vértice e retornar a ele através de outros. Nem todo grafo tem ciclos, mas pode ser um desafio encontrá-los. Você receberá arquivos como o 
 seguinte:
 
-'''
-1) 1 > 2
-2) 2 > 3
-3) 3 > 1
-'''
+```
+1 > 2
+2 > 3
+3 > 1
+```
 
 Que indicam todos os caminhos que podem ser tomados saindo de um vértice e para onde eles vão. No exemplo acima um óbvio ciclo existe. Implemente uma árvore 
 binária de busca para garantir uma rápida procura de dados e então use-a para fazer o seu próprio HashMap em Java para conseguir detectar se você está visitando 
