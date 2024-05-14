@@ -1,8 +1,8 @@
 grafo -> vetor de vetor
 
-cada pai vai ter um vetor que contém seus filhos
+o index do vetor representa o value
 
-cada nó contém: value e next
+os filhos são os vetores
 
 na queue é adicionado o primeiro pai
 
